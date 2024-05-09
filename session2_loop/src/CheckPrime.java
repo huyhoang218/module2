@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CheckPrime {
-    static boolean prime(int number) {
+    public static boolean prime(int number) {
         for (int i = 2; i <= Math.sqrt(number); i++) {
             if (number % i == 0) {
                 return false;
@@ -25,7 +25,7 @@ public class CheckPrime {
         while (count < number) {
             if (prime(n)) {
                 count++;
-                System.out.println(n);
+                System.out.print(n + " ");
             }
             n++;
         }
