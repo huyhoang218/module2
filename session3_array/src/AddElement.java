@@ -11,12 +11,10 @@ public class AddElement {
         } while (length <= 0);
 
         int[] array = new int[length];
-        int element;
         //Nhập phần tử trong mảng
         for (int i = 0; i < array.length; i++) {
             System.out.print("element " + i + " = ");
-            element = input.nextInt();
-            array[i] = element;
+            array[i] = input.nextInt();
         }
 
         System.out.print("Add element: ");
