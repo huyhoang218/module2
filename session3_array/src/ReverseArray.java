@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class ReverseArray {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter length of array");
-        int length = input.nextInt();
+        int length;
+        do {
+            System.out.println("Enter length of array");
+            length = input.nextInt();
+        } while (length > 20);
 
         int[] array = new int[length];
         int element;
