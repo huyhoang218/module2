@@ -23,14 +23,29 @@ public class SumColumn {
 
         System.out.print("Nhập cột muốn tính tổng: ");
         int column = input.nextInt();
-        int sumColumn = 0;
-        //Tính tổng cột
+        double sumColumn = 0;
+        System.out.println(sumColumn(array, column, sumColumn));
+
+        double total = 0;
+        System.out.println("Total of diagoal line is " + diagonalLine(array, total));
+    }
+
+    //Tính tổng cột
+    public static double sumColumn(double[][] array, int column, double sumColumn) {
         for (int c = 0; c < array[0].length; c++) {
             for (int r = 0; r < array.length; r++) {
                 if (c == column)
                     sumColumn += array[r][c];
             }
         }
-        System.out.println(sumColumn);
+        return sumColumn;
+    }
+
+    //Tính tổng đường chéo
+    public static double diagonalLine(double[][] arr, double total) {
+        for (int r = 0; r < arr.length; r++) {
+            total += arr[r][r];
+        }
+        return total;
     }
 }
