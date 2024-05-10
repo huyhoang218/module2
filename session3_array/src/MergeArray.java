@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MergeArray {
@@ -21,9 +22,7 @@ public class MergeArray {
             j++;
         }
 
-        for (int i = 0; i < length; i++) {
-            System.out.print(array[i] + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 
     public static void inputElement(int[] array) {

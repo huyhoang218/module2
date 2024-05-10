@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AddElement {
@@ -39,8 +40,6 @@ public class AddElement {
         for (int i = index + 1; i < newArray.length; i++) {
             newArray[i] = array[i - 1];
         }
-        for (int i = 0; i < newArray.length; i++) {
-            System.out.print(newArray[i] + " ");
-        }
+        System.out.println(Arrays.toString(newArray));
     }
 }

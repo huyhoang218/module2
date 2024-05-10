@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DeleteElement {
@@ -25,8 +26,6 @@ public class DeleteElement {
             }
         }
         // in ra mảng mới
-        for (int i = 0; i < newArray.length; i++) {
-            System.out.print(newArray[i] + " ");
-        }
+        System.out.println(Arrays.toString(newArray));
     }
 }
