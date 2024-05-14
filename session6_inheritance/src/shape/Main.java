@@ -38,16 +38,11 @@ public class Main {
         Triangle triangle = new Triangle();
         double side1, side2, side3;
         do {
-//            System.out.print("enter side 1: ");
-//            triangle.setSide1(input.nextDouble());
-//            System.out.print("enter side 2: ");
-//            triangle.setSide2(input.nextDouble());
-//            System.out.print("enter side 3: ");
-            System.out.print("fill side1 : ");
+            System.out.print("enter side1 : ");
             side1 = input.nextDouble();
-            System.out.print("fill side2 : ");
+            System.out.print("enter side2 : ");
             side2 = input.nextDouble();
-            System.out.print("fill side3 : ");
+            System.out.print("enter side3 : ");
             side3 = input.nextDouble();
         } while (!isTriangle(side1, side2, side3));
 
