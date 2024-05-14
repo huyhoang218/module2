@@ -1,15 +1,20 @@
 package fan;
 
 public class Fan {
-    final int SLOW = 1;
-    final int MEDIUM = 2;
-    final int FAST = 3;
-    private int speed = SLOW;
-    private boolean on = false;
-    private double radius = 5;
-    private String color = "blue";
+    public final int SLOW = 1;
+    public final int MEDIUM = 2;
+    public final int FAST = 3;
+    private int speed;
+    private boolean on;
+    private double radius;
+    private String color;
 
-    public Fan(){}
+    public Fan(){
+        speed = SLOW;
+        on = false;
+        radius = 5;
+        color = "blue";
+    }
 
     public void setSpeed(int speed) {
         if (speed == 2) {
@@ -18,12 +23,14 @@ public class Fan {
             this.speed = FAST;
         }
     }
+
+    public double getRadius() {
+        return radius;
+    }
     public void setOn() {
         on = true;
     }
-    public void setOff() {
-        on = false;
-    }
+
     public void setRadius(double radius) {
         this.radius = radius;
     }
@@ -31,10 +38,13 @@ public class Fan {
         this.color = color;
     }
 
+    @Override
     public String toString() {
-        if (on) {
-            return "speed = " + speed + " color = " + color + " radius = " + radius + " fan is on";
-        }
-        return "speed = " + speed + " color = " + color + " radius = " + radius + " fan is off";
+        return "Fan{" +
+                "speed=" + speed +
+                ", on=" + on +
+                ", radius=" + radius +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

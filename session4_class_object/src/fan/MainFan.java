@@ -1,6 +1,4 @@
-package mainFan;
-
-import fan.Fan;
+package fan;
 
 public class MainFan {
     public static void main(String[] args) {
@@ -13,11 +11,11 @@ public class MainFan {
         System.out.println(fan1.toString());
 
         Fan fan2 = new Fan();
-        fan2.setOff();
         fan2.setSpeed(2);
         fan2.setRadius(4);
         fan2.setColor("blue");
 
         System.out.println(fan2.toString());
+
     }
 }
