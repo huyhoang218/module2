@@ -49,6 +49,13 @@ public class Triangle extends Shape{
         return side1 + side2 + side3;
     }
 
+    public boolean isTriangle(double a, double b, double c) {
+        if (a + b > c && a + c > b && b + c > a) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "A triangle with side 1 = " + getSide1() +

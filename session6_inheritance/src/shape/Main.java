@@ -44,7 +44,7 @@ public class Main {
             side2 = input.nextDouble();
             System.out.print("enter side3 : ");
             side3 = input.nextDouble();
-        } while (!isTriangle(side1, side2, side3));
+        } while (!triangle.isTriangle(side1, side2, side3));
 
         input.nextLine();
         System.out.print("enter color: ");
@@ -54,10 +54,4 @@ public class Main {
         System.out.println(triangle);
     }
 
-    public static boolean isTriangle(double a, double b, double c) {
-        if (a + b > c && a + c > b && b + c > a) {
-            return true;
-        }
-        return false;
-    }
 }
