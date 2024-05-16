@@ -1,6 +1,8 @@
 package shape;
 
-public class Rectangle extends Shape {
+import shape.resizeable.Resizeable;
+
+public class Rectangle extends Shape implements Resizeable {
     private double width;
     private double height;
 
@@ -50,5 +52,10 @@ public class Rectangle extends Shape {
         return "A rectangle with width = " + getWidth() +
                 " and height = " + getHeight() + ", which is a subclass of " +
                 super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        System.out.println(getArea() + (getArea() * percent / 100));
     }
 }

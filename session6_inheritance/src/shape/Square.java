@@ -1,6 +1,9 @@
 package shape;
 
-public class Square extends Rectangle {
+import shape.colorable.Colorable;
+import shape.resizeable.Resizeable;
+
+public class Square extends Rectangle implements Colorable {
 
     public Square() {
     }
@@ -38,5 +41,15 @@ public class Square extends Rectangle {
                 getSide() +
                 ", which is a subclass of " +
                 super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        System.out.println(getArea() + (getArea() * percent / 100));
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides");
     }
 }
