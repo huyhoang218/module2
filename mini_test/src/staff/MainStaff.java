@@ -82,24 +82,24 @@ public class MainStaff {
         return totalWage;
     }
 
-    public static void sortStaffFullTimeBySalary(Staff[] staffs) {
+    public static void sortStaffFullTimeBySalary(Staff[] newStaff) {
         int min;
-        for (int i = 0; i < staffs.length - 1 && (staffs[i] instanceof StaffFullTime); i++) {
+        for (int i = 0; i < newStaff.length - 1; i++) {
             min = i;
-            for (int j = i + 1; j < staffs.length && (staffs[j] instanceof StaffFullTime); j++)
-                if (staffs[j].getRealSalary() < staffs[min].getRealSalary()) {
+            for (int j = i + 1; j < newStaff.length; j++)
+                if (newStaff[j].getRealSalary() < newStaff[min].getRealSalary()) {
                     min = j;
                 }
             if (min != i) {
-                Staff temp = staffs[min];
-                staffs[min] = staffs[i];
-                staffs[i] = temp;
+                Staff temp = newStaff[min];
+                newStaff[min] = newStaff[i];
+                newStaff[i] = temp;
             }
         }
     }
 
-    public static void displaySortStaffFullTimeBySalary(Staff[] staffs) {
-        for (Staff staff : staffs) {
+    public static void displaySortStaffFullTimeBySalary(Staff[] newStaff) {
+        for (Staff staff : newStaff) {
                 System.out.println(staff.toString());
         }
     }
