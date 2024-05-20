@@ -69,9 +69,9 @@ public class MainStaff {
 
     public static void sortStaffFullTimeBySalary(Staff[] staffs) {
         int min;
-        for (int i = 0; i < staffs.length - 1; i++) {
+        for (int i = 0; i < staffs.length - 1 && (staffs[i] instanceof StaffFullTime); i++) {
             min = i;
-            for (int j = i + 1; j < staffs.length; j++)
+            for (int j = i + 1; j < staffs.length && (staffs[j] instanceof StaffFullTime); j++)
                 if (staffs[j].getRealSalary() < staffs[min].getRealSalary()) {
                     min = j;
                 }
