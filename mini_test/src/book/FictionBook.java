@@ -1,4 +1,6 @@
-public class FictionBook extends Book{
+package book;
+
+public class FictionBook extends Book {
     private String cateGory;
 
     public FictionBook() {

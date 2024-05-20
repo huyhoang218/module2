@@ -1,3 +1,5 @@
+package book;
+
 public abstract class Book {
     private int bookCode;
     private String name;
