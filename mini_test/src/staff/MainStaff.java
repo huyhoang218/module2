@@ -27,8 +27,23 @@ public class MainStaff {
         System.out.println();
 
         System.out.println("Sắp xếp lương nhân viên full time theo lương tăng dần");
-        sortStaffFullTimeBySalary(staffs);
-        displaySortStaffFullTimeBySalary(staffs);
+        Staff[] newStaff = getNewStaff(staffs);
+        sortStaffFullTimeBySalary(newStaff);
+        displaySortStaffFullTimeBySalary(newStaff);
+    }
+
+    public static Staff[] getNewStaff(Staff[] staffs) {
+        int countStaffFullTime = 0;
+        for (Staff staff : staffs) {
+            if (staff instanceof StaffFullTime) {
+                countStaffFullTime++;
+            }
+        }
+        Staff[] newStaff = new Staff[countStaffFullTime];
+        for (int i = 0; i < countStaffFullTime; i++) {
+            newStaff[i] = staffs[i];
+        }
+        return newStaff;
     }
 
     public static double getAverageSalary(Staff[] staffs) {
@@ -85,9 +100,7 @@ public class MainStaff {
 
     public static void displaySortStaffFullTimeBySalary(Staff[] staffs) {
         for (Staff staff : staffs) {
-            if (staff instanceof StaffFullTime) {
                 System.out.println(staff.toString());
-            }
         }
     }
 }
