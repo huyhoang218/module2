@@ -1,6 +1,6 @@
 
 public class binarySearch {
-    public static void main(MaxString[] args) {
+    public static void main(String[] args) {
         int[] list = {2, 4, 7, 10, 11, 45, 50, 59, 60, 66, 69, 70, 79};
         int key = 10;
         System.out.println(find(list, key));
