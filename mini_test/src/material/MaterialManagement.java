@@ -59,13 +59,11 @@ public class MaterialManagement {
 
     public double getDifference() {
         double totalNoDiscount = 0;
-        double totalDiscount = 0;
 
         for (Material material : materials) {
             totalNoDiscount += material.getAmount();
-            totalDiscount += material.getRealMoney();
         }
-        return totalNoDiscount - totalDiscount;
+        return totalNoDiscount - totalRealMoney();
     }
 
     public void displayAll() {

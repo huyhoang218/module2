@@ -15,7 +15,7 @@ public class MaterialMain {
 
         management.addMaterial(new Meat("6", "thit lon", LocalDate.of(2024, 5, 28), 200, 50));
         management.addMaterial(new Meat("7", "thit lon", LocalDate.of(2024, 5, 28), 200, 50));
-        management.addMaterial(new Meat("8", "thit lon 8", LocalDate.of(2024, 5, 28), 300, 50));
+        management.addMaterial(new Meat("8", "thit lon 8", LocalDate.of(2024, 5, 20), 300, 50));
         management.addMaterial(new Meat("9", "thit lon", LocalDate.of(2024, 5, 28), 50, 50));
         management.addMaterial(new Meat("10", "thit lon", LocalDate.of(2024, 5, 28), 200, 50));
 
