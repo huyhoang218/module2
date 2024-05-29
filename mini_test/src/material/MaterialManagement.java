@@ -2,10 +2,9 @@ package material;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 public class MaterialManagement {
-    private List<Material> materials;
+    private ArrayList<Material> materials;
 
     public MaterialManagement() {
         materials = new ArrayList<>();
@@ -19,7 +18,7 @@ public class MaterialManagement {
         for (Material material : materials) {
             if (material.getId().equals(id)) {
                 materials.remove(material);
-                break;
+                return;
             }
         }
     }
@@ -33,13 +32,7 @@ public class MaterialManagement {
         }
     }
 
-    public void display() {
-        for (Material material : materials) {
-            System.out.println(material.toString());
-        }
-    }
-
-    public double totalCost() {
+    public double totalRealMoney() {
         double total = 0;
         for (Material material : materials) {
             total += material.getRealMoney();
@@ -47,20 +40,24 @@ public class MaterialManagement {
         return total;
     }
 
-    public void sortByRealMoney() {
-        List<Material> newMaterial = new ArrayList<>(materials);
+    public ArrayList<Material> getSortByRealMoney() {
+        ArrayList<Material> newMaterial = new ArrayList<>(materials);
         newMaterial.sort(new Comparator<Material>() {
             @Override
             public int compare(Material o1, Material o2) {
                 return (int) (o1.getRealMoney() - o2.getRealMoney());
             }
         });
-        for (Material material : newMaterial) {
+        return newMaterial;
+    }
+
+    public void displaySortMaterial(ArrayList<Material> materials) {
+        for (Material material : materials) {
             System.out.println(material.toString());
         }
     }
 
-    public double difference() {
+    public double getDifference() {
         double totalNoDiscount = 0;
         double totalDiscount = 0;
 
@@ -69,5 +66,11 @@ public class MaterialManagement {
             totalDiscount += material.getRealMoney();
         }
         return totalNoDiscount - totalDiscount;
+    }
+
+    public void displayAll() {
+        for (Material material : materials) {
+            System.out.println(material.toString());
+        }
     }
 }
