@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public static final String SRC = "C:\\codegym\\module2\\session\\session16_text_file\\src\\read_file_csv\\contries.csv";
+
     public static void main(String[] args) {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader("C:\\codegym\\module2\\session\\session16_text_file\\src\\read_file_csv\\contries.csv"));
+            br = new BufferedReader(new FileReader(SRC));
 
             while ((line = br.readLine() )!= null) {
                 displayCountry(parseCsvLine(line));
