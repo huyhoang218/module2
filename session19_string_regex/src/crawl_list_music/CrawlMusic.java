@@ -19,7 +19,7 @@ public class CrawlMusic {
             scanner.close();
             content.replaceAll("\\n+", "");
 
-            Pattern pattern = Pattern.compile("name_song\\\">(.*?)</a>");
+            Pattern pattern = Pattern.compile("name_song\">(.*?)</a>");
             Matcher matcher = pattern.matcher(content);
 
             while (matcher.find()) {
