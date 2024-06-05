@@ -1,4 +1,4 @@
-package mvc.model;
+package mvc_student.model;
 
 public class Student extends Person{
     private String classRoom;

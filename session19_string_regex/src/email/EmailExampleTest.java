@@ -3,7 +3,7 @@ package email;
 public class EmailExampleTest {
 
     private static EmailExample emailExample;
-    public static final String[] validEmail = new String[] {"daohuyhoang@gmail.com", "ab@yahoo.com", "abc@hotmail.com"};
+    public static final String[] validEmail = new String[] {"ha@gmail.com", "ab@yahoo.com", "abc@hotmail.com"};
     public static final String[] invalidEmail = new String[] {"@gmail.com", "ab@gmail.", "@#abc@gmail.com"};
 
     public static void main(String[] args) {
