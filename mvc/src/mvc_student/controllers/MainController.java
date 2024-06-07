@@ -24,7 +24,7 @@ public class MainController {
             switch (choice) {
                 case 1: {
                     try {
-                        student = studentView.viewAdd();
+                        student = studentView.viewOperation();
                         result = studentService.add(student);
                         studentView.viewMessage(result);
                         break;
@@ -33,7 +33,22 @@ public class MainController {
                     }
                 }
                 case 2: {
-                    
+                    code = studentView.inputCode();
+                    student = studentService.searchByCode(code);
+
+                    if (student == null) {
+                        studentView.viewMessage(false);
+                    } else {
+                        Student newStudent;
+                        newStudent = studentView.viewOperation();
+                        if (student.getCode() == newStudent.getCode()) {
+                            studentService.editStudent(newStudent);
+                            studentView.viewMessage(true);
+                        } else {
+                            studentView.viewMessage(false);
+                            throw new IllegalArgumentException("Code không được thay đổi");
+                        }
+                    }
                     break;
                 }
                 case 3: {

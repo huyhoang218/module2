@@ -31,11 +31,17 @@ public class StudentView {
         return choice;
     }
 
-    public Student viewAdd() {
+    public Student viewOperation() {
         Scanner input = new Scanner(System.in);
-//        System.out.print("Input code: ");
-        int code = inputCode();
-//        int code = Integer.parseInt(input.nextLine());
+        int code = -1;
+        do {
+            try {
+                System.out.print("Nhập code: ");
+                code = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Code là số nguyên dương");
+            }
+        } while (code <= 0);
         System.out.print("Nhập tên: ");
         String name = input.nextLine();
         System.out.print("Nhập địa chỉ: ");
@@ -75,7 +81,7 @@ public class StudentView {
 
         do {
             try {
-                System.out.print("Nhập code: ");
+                System.out.print("Nhập code cần thao tác: ");
                 code = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.err.println("Code là số nguyên dương");
@@ -102,4 +108,5 @@ public class StudentView {
         System.out.print("Nhập tên người dùng cần tìm: ");
         return new Scanner(System.in).nextLine();
     }
+    
 }

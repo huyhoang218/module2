@@ -15,4 +15,6 @@ public interface IService<T extends Person> {
     void removeStudent(T student);
 
     List<T> searchByName(String name);
+
+    void editStudent(T student);
 }

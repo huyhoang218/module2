@@ -63,4 +63,8 @@ public class StudentService implements IStudentService {
         return result;
     }
 
+    @Override
+    public void editStudent(Student student) {
+        studentRepository.editStudent(student);
+    }
 }
