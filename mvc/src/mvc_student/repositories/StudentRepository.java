@@ -72,14 +72,15 @@ public class StudentRepository {
         return null;
     }
 
-    public void editStudent(Student newStudent) {
+    public void editStudent(Student student) {
+        Student newStudent;
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getCode() == newStudent.getCode()) {
-                Student editStudent = students.get(i);
-                editStudent.setName(newStudent.getName());
-                editStudent.setAddress(newStudent.getAddress());
-                editStudent.setClassRoom(newStudent.getClassRoom());
+            if (students.get(i).getCode() == student.getCode()) {
+                newStudent = students.get(i);
+                newStudent.setName(student.getName());
+                newStudent.setAddress(student.getAddress());
+                newStudent.setClassRoom(student.getClassRoom());
                 break;
             }
         }

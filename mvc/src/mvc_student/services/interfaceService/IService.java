@@ -6,7 +6,7 @@ import mvc_student.model.Student;
 import java.util.List;
 
 public interface IService<T extends Person> {
-    boolean add(Student student);
+    boolean add(T student);
 
     List<T> getALL();
 
