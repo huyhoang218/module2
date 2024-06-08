@@ -12,7 +12,7 @@ public interface IService<T extends Person>{
 
     void removeEmployee(T employee);
 
-    boolean editEmployee(T newEmployee);
+    boolean editEmployee(int id, T newEmployee);
 
     List<T> searchByName(String name);
 }

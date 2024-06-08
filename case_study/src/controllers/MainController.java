@@ -6,6 +6,7 @@ import services.IEmployeeService;
 import services.TypeName;
 import views.EmployeeView;
 import views.ManagerView;
+
 import java.util.List;
 
 public class MainController {
@@ -19,10 +20,10 @@ public class MainController {
 
         int option = managerView.managerView();
         int choice;
-        int code;
+        int id;
         String name;
 
-        boolean result;
+        boolean result = false;
 
         switch (option) {
             case 1: {
@@ -36,22 +37,27 @@ public class MainController {
                             break;
                         }
                         case 2: {
-                            code = employeeView.inputID();
-                            employee = employeeService.searchById(code);
+                            id = employeeView.inputID();
+                            employee = employeeService.searchById(id);
                             if (employee == null) {
                                 employeeView.showNotification(false);
                             } else {
                                 do {
-                                    employee = employeeView.viewOperation();
-                                    result = employeeService.editEmployee(employee);
-                                    employeeView.showNotification(result);
+                                    try {
+                                        employee = employeeView.viewOperation();
+                                        result = employeeService.editEmployee(id, employee);
+                                        employeeView.showNotification(result);
+                                    } catch (IllegalArgumentException e) {
+                                        System.out.println("Nhập thông tin không hợp lệ");
+                                    }
+
                                 } while (!result);
                             }
                             break;
                         }
                         case 3: {
-                            code = employeeView.inputID();
-                            employee = employeeService.searchById(code);
+                            id = employeeView.inputID();
+                            employee = employeeService.searchById(id);
 
                             if (employee == null) employeeView.showNotification(false);
                             else {

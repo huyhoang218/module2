@@ -57,12 +57,14 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public boolean editEmployee(Employee employee) {
+    public boolean editEmployee(int id, Employee employee) {
 
         for (Employee e : employeeRepository.getAll()) {
-            if (e.getId() == employee.getId() && employee.getName().matches(REGEX_NAME)) {
-                employeeRepository.editEmployee(employee);
-                return true;
+            if (e.getId() == id && employee.getId() == id) {
+                if (employee.getName().matches(REGEX_NAME)) {
+                    employeeRepository.editEmployee(employee);
+                    return true;
+                }
             }
         }
         return false;
