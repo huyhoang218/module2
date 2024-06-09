@@ -1,10 +1,12 @@
 package services;
 
 import models.Person;
+import services.exception.InvalidNameException;
+
 import java.util.List;
 
 public interface IService<T extends Person>{
-    boolean add(T employee);
+    boolean add(T employee) throws InvalidNameException;
 
     List<T> getAll();
 
@@ -12,7 +14,7 @@ public interface IService<T extends Person>{
 
     void removeEmployee(T employee);
 
-    boolean editEmployee(int id, T newEmployee);
+    boolean editEmployee(int id, T newEmployee) throws InvalidNameException;
 
     List<T> searchByName(String name);
 }

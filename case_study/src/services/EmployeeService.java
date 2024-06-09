@@ -2,6 +2,7 @@ package services;
 
 import models.Employee;
 import repositories.EmployeeRepository;
+import services.exception.InvalidNameException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,19 +26,18 @@ public class EmployeeService implements IEmployeeService {
         return instance;
     }
     @Override
-    public boolean add(Employee employee) {
+    public boolean add(Employee employee) throws InvalidNameException {
 
         for (Employee e : employeeRepository.getAll()) {
             if (e.getId() == employee.getId())
-                return false;
+                throw new RuntimeException("ID đã tồn tại");
         }
 
         if (employee.getName().matches(REGEX_NAME)) {
             employeeRepository.addEmployee(employee);
         } else {
-            return false;
+            throw new InvalidNameException("Tên có định dạng không chính xác");
         }
-
         return true;
     }
 
@@ -57,13 +57,19 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public boolean editEmployee(int id, Employee employee) {
+    public boolean editEmployee(int id, Employee employee) throws InvalidNameException {
 
         for (Employee e : employeeRepository.getAll()) {
-            if (e.getId() == id && employee.getId() == id) {
-                if (employee.getName().matches(REGEX_NAME)) {
-                    employeeRepository.editEmployee(employee);
-                    return true;
+            if (e.getId() == id) {
+                if (employee.getId() == id) {
+                    if (employee.getName().matches(REGEX_NAME)) {
+                        employeeRepository.editEmployee(employee);
+                        return true;
+                    } else {
+                        throw new InvalidNameException("Tên có định dạng không chính xác");
+                    }
+                } else {
+                    throw new RuntimeException("Không được thay đổi ID");
                 }
             }
         }

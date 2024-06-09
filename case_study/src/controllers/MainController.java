@@ -4,6 +4,7 @@ import models.Employee;
 import services.FactoryService;
 import services.IEmployeeService;
 import services.TypeName;
+import services.exception.InvalidNameException;
 import views.EmployeeView;
 import views.ManagerView;
 
@@ -32,7 +33,11 @@ public class MainController {
                     switch (choice) {
                         case 1: {
                             employee = employeeView.viewOperation();
-                            result = employeeService.add(employee);
+                            try {
+                                result = employeeService.add(employee);
+                            } catch (InvalidNameException | RuntimeException e) {
+                                System.err.println(e.getMessage());
+                            }
                             employeeView.showNotification(result);
                             break;
                         }
@@ -43,14 +48,13 @@ public class MainController {
                                 employeeView.showNotification(false);
                             } else {
                                 do {
+                                    employee = employeeView.viewOperation();
                                     try {
-                                        employee = employeeView.viewOperation();
                                         result = employeeService.editEmployee(id, employee);
-                                        employeeView.showNotification(result);
-                                    } catch (IllegalArgumentException e) {
-                                        System.out.println("Nhập thông tin không hợp lệ");
+                                    } catch (InvalidNameException | RuntimeException e) {
+                                        System.err.println(e.getMessage());
                                     }
-
+                                    employeeView.showNotification(result);
                                 } while (!result);
                             }
                             break;
