@@ -1,15 +1,16 @@
-package services;
+package services.personService;
 
-import models.Employee;
+import models.modelPerson.Employee;
 import repositories.EmployeeRepository;
 import services.exception.InvalidNameException;
+import services.iServices.IEmployeeService;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class EmployeeService implements IEmployeeService {
-    public static final String REGEX_NAME =
+    private static final String REGEX_NAME =
             "^[A-ZÁÀÃẢẠĂẮẰẴẲẶÂẤẦẪẨẬĐÉÈẼẺẸÊẾỀỄỂỆÍÌĨỈỊÓÒÕỎỌÔỐỒỖỔỘƠỚỜỠỞỢÚÙŨỦỤƯỨỪỮỬỰÚÙŨỦỤƯỨỪỮỬỰÝỲỸỶỴ]" +
             "[a-záàãảạăắằẵẳặâấầẫẩậđéèẽẻẹêếềễểệíìĩỉịóòõỏọôốồỗổộơớờỡởợúùũủụưứừữửựúùũủụưứừữửựýỳỹỷỵ]+" +
             "(\\s[A-ZÁÀÃẢẠĂẮẰẴẲẶÂẤẦẪẨẬĐÉÈẼẺẸÊẾỀỄỂỆÍÌĨỈỊÓÒÕỎỌÔỐỒỖỔỘƠỚỜỠỞỢÚÙŨỦỤƯỨỪỮỬỰÚÙŨỦỤƯỨỪỮỬỰÝỲỸỶỴ]" +
@@ -43,12 +44,12 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> getAll() {
-        return employeeRepository.getAll();
+        return employeeRepository.readEmployee();
     }
 
     @Override
-    public Employee searchById(int code) {
-        return employeeRepository.searchById(code);
+    public Employee searchById(int id) {
+        return employeeRepository.searchById(id);
     }
 
     @Override

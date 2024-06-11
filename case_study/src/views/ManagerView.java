@@ -17,8 +17,7 @@ public class ManagerView {
     public int managerView() {
         System.out.println("-----------------Manger View-----------------");
         System.out.println("1. Employee Manager");
-        System.out.println("2. Customer Management");
-        System.out.println("3. Clothing Management");
+        System.out.println("2. Product Management");
         System.out.println("0. End program");
 
         Scanner scanner = new Scanner(System.in);

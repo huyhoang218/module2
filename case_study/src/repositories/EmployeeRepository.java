@@ -1,11 +1,7 @@
 package repositories;
+import models.modelPerson.Employee;
 
-import models.Employee;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +10,9 @@ public class EmployeeRepository {
     private static List<Employee> employees = new ArrayList<>();
     private static EmployeeRepository instance;
 
-    private EmployeeRepository() {}
+    private EmployeeRepository() {
+        readEmployee();
+    }
 
     public synchronized static EmployeeRepository getInstance() {
         if (instance == null) {
@@ -22,24 +20,19 @@ public class EmployeeRepository {
         }
         return instance;
     }
-    static {
-        employees.add(new Employee(1, "Hoang", 18, "Nam Dinh", 29));
-        employees.add(new Employee(2, "Huy", 20, "Ha Noi", 30));
-        employees.add(new Employee(3, "Dao", 17, "HCM", 28));
-    }
 
     public void addEmployee(Employee employee) {
         employees.add(employee);
-        writeFile(employees, false);
+        writeEmployee(employee, true);
     }
 
     public List<Employee> getAll() {
         return new ArrayList<>(employees);
     }
 
-    public Employee searchById(int code) {
+    public Employee searchById(int id) {
         for (Employee employee : employees) {
-            if (employee.getId() == code) {
+            if (employee.getId() == id) {
                 return employee;
             }
         }
@@ -53,7 +46,7 @@ public class EmployeeRepository {
                 break;
             }
         }
-        writeFile(employees, false);
+        writeAllEmployee(employees, false);
     }
 
     public void editEmployee(Employee employee) {
@@ -63,10 +56,20 @@ public class EmployeeRepository {
                 break;
             }
         }
-        writeFile(employees, false);
+        writeAllEmployee(employees, false);
     }
 
-    private void writeFile(List<Employee> employees, boolean append) {
+    private void writeEmployee(Employee employee, boolean append) {
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(SRC_EMPLOYEE, append))) {
+            bufferedWriter.write(employee.toString());
+            bufferedWriter.newLine();
+        } catch (IOException exception) {
+            System.err.println("Lỗi ghi file");
+        }
+    }
+
+    private void writeAllEmployee(List<Employee> employees, boolean append) {
         File file = new File(SRC_EMPLOYEE);
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, append))) {
             for (Employee employee : employees) {
@@ -76,6 +79,22 @@ public class EmployeeRepository {
         } catch (IOException exception) {
             System.err.println("Lỗi ghi File");
         }
+    }
+
+    public List<Employee> readEmployee() {
+        List<Employee> employeeList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(SRC_EMPLOYEE))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] temp = line.split(",");
+                employeeList.add(new Employee(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), temp[3], Double.parseDouble(temp[4])));
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File không tìm thấy");
+        } catch (IOException e) {
+            System.out.println("Lỗi đọc dữ liệu");
+        }
+        return employeeList;
     }
 
 }

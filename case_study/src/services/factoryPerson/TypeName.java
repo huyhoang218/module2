@@ -1,4 +1,4 @@
-package services;
+package services.factoryPerson;
 
 public enum TypeName {
     EMPLOYEE, CUSTOMER;

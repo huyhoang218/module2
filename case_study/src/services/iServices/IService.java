@@ -1,6 +1,6 @@
-package services;
+package services.iServices;
 
-import models.Person;
+import models.modelPerson.Person;
 import services.exception.InvalidNameException;
 
 import java.util.List;

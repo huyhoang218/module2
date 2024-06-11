@@ -1,6 +1,6 @@
 package views;
 
-import models.Employee;
+import models.modelPerson.Employee;
 
 import java.util.List;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class EmployeeView {
         System.out.println("3. Delete Employee");
         System.out.println("4. Display All Employee");
         System.out.println("5. Search Employee By Name");
-        System.out.println("0. End program");
+        System.out.println("0. Exit");
 
         int choice = -1;
         Scanner scanner = new Scanner(System.in);
@@ -71,7 +71,7 @@ public class EmployeeView {
         System.out.print("Enter Address: ");
         String address = scanner.nextLine();
 
-        int day = -1;
+        double day = -1;
         do {
             try {
                 System.out.print("Enter work day: ");
@@ -94,9 +94,9 @@ public class EmployeeView {
 
     public void showNotification(boolean result) {
         if (result) {
-            System.out.println("Successful task");
+            System.out.println("\u001B[34m" + "Successful task" + "\u001B[0m");
         } else {
-            System.out.println("Task failed");
+            System.out.println("\u001B[31m" + "Task failed" + "\u001B[0m");
         }
     }
 

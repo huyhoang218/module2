@@ -1,4 +1,4 @@
-package models;
+package models.modelPerson;
 
 public abstract class Person {
     private int id;
@@ -16,8 +16,11 @@ public abstract class Person {
     }
 
     @Override
+//    public String toString() {
+//        return "ID = " + id + ", name = " + name + ", age = " + age + ", address = " + address;
+//    }
     public String toString() {
-        return "ID = " + id + ", name = " + name + ", age = " + age + ", address = " + address;
+        return id + "," + name + "," + age + "," + address;
     }
 
     public int getId() {
