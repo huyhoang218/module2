@@ -18,7 +18,7 @@ public class ManagerView {
         System.out.println("-----------------Manger View-----------------");
         System.out.println("1. Employee Manager");
         System.out.println("2. Product Management");
-        System.out.println("0. End program");
+        System.out.println("0. Exit");
 
         Scanner scanner = new Scanner(System.in);
         int option = -1;

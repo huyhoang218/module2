@@ -32,10 +32,18 @@ public class UserView {
         System.out.println("-------------------View User-------------------");
         System.out.println("1. Register");
         System.out.println("2. Login");
-        System.out.println("3. Exit");
-        System.out.print("Choose an option: ");
+        System.out.println("0. Exit");
         Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.nextLine());
+        int choose = -1;
+        do {
+            try {
+                System.out.print("Choose an option: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Choose phải là số");
+            }
+        } while (choose < 0 || choose > 2);
+        return choose;
     }
 
     public User loginView() {

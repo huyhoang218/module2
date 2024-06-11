@@ -87,7 +87,8 @@ public class EmployeeRepository {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] temp = line.split(",");
-                employeeList.add(new Employee(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), temp[3], Double.parseDouble(temp[4])));
+                employeeList.add(new Employee(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), temp[3], Double.parseDouble(temp[4].replace(",", "."))));
+
             }
         } catch (FileNotFoundException e) {
             System.err.println("File không tìm thấy");

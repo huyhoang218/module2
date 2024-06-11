@@ -2,6 +2,7 @@ package views;
 
 import models.modelClothing.Product;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ProductView {
@@ -45,7 +46,7 @@ public class ProductView {
 
     public String inputCode() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the shirt id that needs editing: ");
+        System.out.print("Enter the product id that needs editing: ");
         return scanner.nextLine();
     }
 
@@ -63,5 +64,35 @@ public class ProductView {
         int stock = Integer.parseInt(scanner.nextLine());
 
         return new Product(code,name, size, price, stock);
+    }
+
+    public void displayAllProduct(List<Product> products) {
+        System.out.println("List Product:");
+        for (Product product : products) {
+            System.out.println(product.toString());
+        }
+    }
+
+    public boolean confirmDelete(Product product) {
+        System.out.println("Bạn có muốn xóa product có code là " +
+                product.getCode() + " tên là " + product.getName() +
+                ". Bấm Yes để xác nhận, No để hủy");
+        Scanner scanner = new Scanner(System.in);
+        String confirm = scanner.nextLine();
+
+        if (confirm.equalsIgnoreCase("Yes"))
+            return true;
+        else {
+            System.out.println("Task failed");
+            return false;
+        }
+    }
+
+    public void showStockProduct(Product product) {
+        System.out.println(product.toString());
+    }
+
+    public void productSoldOut(Product product) {
+        System.out.println(product.getName() + " is sold out");
     }
 }

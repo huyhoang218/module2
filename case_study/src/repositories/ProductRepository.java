@@ -81,4 +81,34 @@ public class ProductRepository {
             System.out.println("Lỗi đọc dữ liệu");
         }
     }
+
+    public List<Product> getAll() {
+        return new ArrayList<>(products);
+    }
+
+    public void removeProduct(Product product) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getCode().equals(product.getCode())) {
+                products.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void editProduct(Product product) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getCode().equals(product.getCode())) {
+                products.set(i, product);
+                break;
+            }
+        }
+    }
+
+
+//    public boolean stockProduct(Product product) {
+//        if (product.getStock() > 0)
+//            return true;
+//        else
+//            return false;
+//    }
 }

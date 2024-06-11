@@ -29,7 +29,6 @@ public class MainController {
         Product product;
         List<Product> products;
         User user;
-        List<User> users;
 
         int choose = userView.view();
 
@@ -143,8 +142,6 @@ public class MainController {
                         }
                         case 0:
                             break;
-                        default:
-                            throw new IllegalStateException("Unexpected value: " + choice);
                     }
                 }
             }
@@ -159,19 +156,62 @@ public class MainController {
                             break;
                         }
                         case 2: {
+                            String code = productView.inputCode();
+                            product = productService.searchByCode(code);
+                            if (product == null) {
+                                employeeView.showNotification(false);
+                            } else {
+                                product = productView.viewOperation();
+                                result = productService.editProduct(code, product);
+                                employeeView.showNotification(result);
+                            }
+                            break;
                         }
                         case 3: {
+                            String code;
+                            code = productView.inputCode();
+                            product = productService.searchByCode(code);
+
+                            if (product == null) employeeView.showNotification(false);
+                            else {
+                                boolean isConfirm = productView.confirmDelete(product);
+                                if (isConfirm) {
+                                    productService.removeProduct(product);
+                                    employeeView.showNotification(true);
+                                }
+                            }
+                            break;
                         }
                         case 4: {
+                            products = productService.getAll();
+                            productView.displayAllProduct(products);
+                            break;
                         }
                         case 5: {
+                            String code = productView.inputCode();
+                            product = productService.searchByCode(code);
+
+                            if (product == null) {
+                                employeeView.showNotification(false);
+                            } else {
+                                boolean isStock = productService.checkStock(product);
+                                if (isStock) {
+                                    productView.showStockProduct(product);
+                                } else {
+                                    productView.productSoldOut(product);
+                                }
+                            }
+                            break;
                         }
                         case 0:
                             break;
                     }
                 }
             }
+            case 0:
+                return;
             default:
+                throw new IllegalStateException("Unexpected value: " + option);
         }
     }
 }
